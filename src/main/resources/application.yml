@@ -1,0 +1,14 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: example-service
+          uri: http://localhost:8081
+          predicates:
+            - Path=/example/**
+          filters:
+            - StripPrefix=1
+            - name: JwtAuthenticationFilter
+
+jwt:
+  secret: mySecretKey
